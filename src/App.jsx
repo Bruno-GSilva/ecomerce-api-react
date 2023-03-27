@@ -4,21 +4,45 @@ import { useEffect } from "react";
 import Cards from "./components/Cards";
 
 export default function App() {
-  const [produtos, setProdutos] = useState({});
+  const [produtos, setProdutos] = useState([]);
   
-  useEffect(()=>{
-    axios
-    .get("https://fakestoreapi.com/products/")
-    .then((response) => {
-      setProdutos(response.data.map((el, key)=> response.data[key].title))
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  },[])
+  
+  async function getData()
+  {
+    let dados = await axios.get("https://fakestoreapi.com/products/")
+    let prods = await dados.data;
+    setProdutos(prods);
+  }
+  
+  useEffect(() => {
+    // axios
+    // .get("https://fakestoreapi.com/products/")
+    // .then((response) => {
+    //   setProdutos(response.data);
+    //   console.log("dados", response.data)
+    //   console.log("produtos", produtos)
+    //   console.log("preço", produtos[0].price)
+    // })
+    // .catch((err) => {
+    //   console.log(err);
+    // });
+    getData();
+  }, [])
+  
+
+  // const propsProdutos = {
+  //   titule:produtos[2],
+  // }
+
   return (
     <>
-    <Cards price={produtos[3]}/>
+    {
+      produtos.map((p) => {
+        console.log(p.price)
+        return <Cards price={p.price}/>
+      })
+    }
+    
     </>
   );
 }
