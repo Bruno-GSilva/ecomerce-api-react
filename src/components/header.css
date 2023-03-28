@@ -1,0 +1,207 @@
+header {
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: purple;
+}
+
+header > nav {
+  display: flex;
+}
+
+header > span:first-of-type {
+  width: 50px;
+  height: 50px;
+  margin-left: 60px;
+
+  filter: grayscale(1);
+  cursor: pointer;
+}
+header > span:last-of-type {
+  width: 50px;
+  height: 50px;
+  margin: 0 30px;
+  cursor: pointer;
+}
+
+header > span:first-of-type > img,
+header > span:last-of-type > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+header > span:first-of-type:hover {
+  scale: 1.1;
+  filter: grayscale(0);
+}
+header > span:last-of-type:hover {
+  scale: 1.1;
+  rotate: -15deg;
+}
+
+header > nav > ul > li {
+  margin-right: 30px;
+}
+
+header > nav > ul > li > a {
+  font-size: 26px;
+  font-weight: bold;
+  color: #fff;
+}
+
+header > nav > ul > li > a:hover {
+  color: rgb(223, 7, 0);
+}
+
+header > label:first-of-type {
+  position: relative;
+}
+
+header > label:first-of-type > [type="search"] {
+  width: 300px;
+  padding: 5px 15px;
+  border: none;
+  border-radius: 0.2rem;
+  transition: 0.5s linear;
+}
+
+header > label:first-of-type > span {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  right: 0;
+  top: -45%;
+  scale: 0.4;
+}
+
+header > label:first-of-type > span > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.burger {
+  position: relative;
+  width: 40px;
+  height: 30px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.burger input {
+  display: none;
+}
+
+.burger span {
+  display: block;
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  background: black;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+}
+
+.burger span:nth-of-type(1) {
+  top: 0px;
+  transform-origin: left center;
+}
+
+.burger span:nth-of-type(2) {
+  top: 50%;
+  transform: translateY(-50%);
+  transform-origin: left center;
+}
+
+.burger span:nth-of-type(3) {
+  top: 100%;
+  transform-origin: left center;
+  transform: translateY(-100%);
+}
+
+.burger input:checked ~ span:nth-of-type(1) {
+  transform: rotate(45deg);
+  top: 0px;
+  left: 5px;
+}
+
+.burger input:checked ~ span:nth-of-type(2) {
+  width: 0%;
+  opacity: 0;
+}
+
+.burger input:checked ~ span:nth-of-type(3) {
+  transform: rotate(-45deg);
+  top: 28px;
+  left: 5px;
+}
+
+header > label:last-of-type{
+  display: none;
+}
+
+@media (max-width: 768px) {
+  header > div{
+    display: none;
+  }
+  header > span:first-of-type,
+  header > span:last-of-type {
+    scale: 0.8;
+  }
+  header > span:first-of-type:hover,
+  header > span:last-of-type:hover {
+    scale: 0.9;
+  }
+  header > nav > ul > li {
+    margin-right: 15px;
+  }
+  header > nav > ul > li > a {
+    font-size: 18px;
+  }
+  header > label:first-of-type > [type="search"] {
+    width: 150px;
+  }
+  header > label:last-of-type{
+    display: none;
+  }
+}
+@media (max-width: 480px) {
+  header > label:last-of-type{
+    display: block;
+    margin: 0 15px;
+  }
+  header > span:first-of-type{
+    scale: 0.8;
+    margin: 0;
+  }
+  header > span:last-of-type{
+    display: none;
+  }
+
+  header > span:first-of-type:hover,
+  header > span:last-of-type:hover {
+    scale: 0.9;
+  }
+  header{
+    justify-content: space-around;
+  }
+  header > nav > ul{
+    display: none;
+  }
+  header > label:first-of-type > [type="search"] {
+    width: 200px;
+    padding: 10px 30px;
+  }
+  header > label:first-of-type > span{
+    display: block;
+    top: -10%;
+  }
+  
+}
